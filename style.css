@@ -1,0 +1,236 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: antiquewhite;
+    overflow-y: hidden;      
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.home{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;    /*positions the image at the center*/
+    z-index: 1;
+    display: none;
+    animation: slide 2s ease;
+}
+
+.slide1{
+    background-image: url("images/chicken.jpeg");
+}
+
+.active{
+    display: flex;
+}
+
+.slide2{
+    background-image: url("images/roast.jpeg");
+}
+
+.slide2 .slide__caption,
+.slide5 .slide__caption{
+    position: absolute;
+    right: 60px;
+    text-align: right;
+}
+
+.slide3{
+    background-image: url("images/vegetables.jpeg");
+}
+
+.slide3 .slide__content{
+    text-align: center;
+}
+
+.slide3 .slide__caption{
+    margin: 0 auto;
+}
+
+.slide3 .slide__caption h1{
+    text-shadow: 0 1px 1px #000000;
+}
+
+.slide4{
+    background-image: url("images/drink.jpeg");
+}
+
+.slide5{
+    background-image: url("images/land.png");
+}
+
+@keyframes slide{
+    0%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+
+.slide__content{
+    max-width: 1170px;
+    margin: auto;
+}
+
+.slide__content{
+    flex-grow: 1;
+}
+
+.slide__caption{
+    width: 50%;
+    padding: 10px;
+}
+
+.active .slide__caption h1{
+    opacity: 0;
+    animation: captionAnimate .5s ease forwards;
+    animation-delay: 1s;
+}
+
+.active .slide__caption p{
+    opacity: 0;
+    animation: captionAnimate .5s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.active .slide__caption a{
+    opacity: 0;
+    animation: captionAnimate .5s ease forwards;
+    animation-delay: 1.4s;
+}
+
+.slide__caption h1{
+    color: #81f019;
+    font-size: 38px;
+    margin: 0;  
+    text-shadow: 0 .5px .5px #333333; 
+}
+
+.slide__caption p{
+    font-size: 19px;
+    color: #ffffff;
+    text-shadow: 0 .3px .3px #000000;
+    font-weight: 600;
+    margin: 7px 0 30px;
+    transform: translateX(-5px);
+}
+
+.slide__caption a{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transform: translateY(-5px);
+}
+
+.slide__caption a:hover{
+    background-color: #631b30;
+}
+
+@keyframes captionAnimate{
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.controls .prev,
+.controls .next{
+    position: absolute;
+    top: 50%;                /*to position it at the center of the container*/
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 20px;
+    text-align: center;
+    padding-top: 10px;
+    background-color: #631b30;
+    z-index: 2;
+    cursor: pointer;
+    transition: all .5 ease;
+}
+
+.controls .prev:hover,
+.controls .next:hover{
+    background-color: #000000;
+}
+
+.controls .prev{
+    left: 0;   /*To float it left*/
+}
+
+.controls .next{
+    right: 0;  /*To float it left*/
+}
+
+.indicators{
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    z-index: 2;
+    transform: translateX(-50%);
+}
+
+.indicators div{
+    display: inline-block;   /*to set them on one line*/
+    width: 25px;
+    height: 25px;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    line-height: 25px;      /*note: same size as the container, to position the text at the center height(y-axis)*/
+    margin: 0 3px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #631b30;
+    cursor: pointer;
+}
+
+.home .indicators div.activeB{
+    background-color:#000000;
+}
+
+@media only screen and (max-width: 768px){
+    .slide__caption{
+        width: 100%;
+    }
+
+    .slide__caption h1{
+        font-size: 25px;
+    }
+
+    .slide2 .slide__caption,
+    .slide5 .slide__caption{
+    right: 0;
+}
+
+    .controls{
+        display: none;
+    }
+}
